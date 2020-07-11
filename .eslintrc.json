@@ -30,6 +30,7 @@
       "react-hooks/exhaustive-deps":"warn",
       "react/jsx-filename-extension":[1,{"extensions":[".tsx"]}],
       "import/prefer-default-export":"off",
+      "@typescript-eslint/no-explicit-any": ["off", { "ignoreRestArgs": true }],
 			"import/extensions":[
         "error",
         "ignorePackages",
@@ -45,3 +46,5 @@
       }
     }
 }
+
+

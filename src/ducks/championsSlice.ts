@@ -34,9 +34,7 @@ export const {
 
 export const retrieveChampions = (dispatch: Dispatch) => {
   dispatch(setChampionLoading())
-  fetch(
-    'http://ddragon.leagueoflegends.com/cdn/10.14.1/data/en_US/champion.json',
-  )
+  fetch(process.env.REACT_APP_LOL_CHAMPIONS + '')
     .then(response => response.json())
     .then(payload => {
       const retrievedChampions = Object.values(payload.data)
