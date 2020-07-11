@@ -1,6 +1,11 @@
 import React from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { useDispatch, useSelector } from 'react-redux'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import chunk from 'lodash.chunk'
+
 import { retrieveChampions } from '../../ducks/championsSlice'
 
 interface IChampion {
@@ -26,14 +31,24 @@ const Dashboard: React.FC = () => {
     return <p>Houve uma falha no carregamento. Tente novamente.</p>
   }
 
+  const championsRows = chunk(champions, 3)
+
   return (
     <>
-      <ul>
-        <h1>Champions</h1>
-        {champions.map((champion: IChampion) => (
-          <li key={champion.key}>{champion.name}</li>
-        ))}
-      </ul>
+      <div>
+        <Container as="header">
+          <h1>Escolha seu campeão...</h1>
+        </Container>
+        <Container>
+          {championsRows.map((champions, index) => (
+            <Row key={index}>
+              {champions.map((champion: any) => (
+                <Col key={champion.key}>{champion.name}</Col>
+              ))}
+            </Row>
+          ))}
+        </Container>
+      </div>
     </>
   )
 }
