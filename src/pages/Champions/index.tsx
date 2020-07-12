@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import 'dotenv/config'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { useDispatch, useSelector } from 'react-redux'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Figure from 'react-bootstrap/Figure'
-import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
+
 import chunk from 'lodash.chunk'
 
 import { retrieveChampions } from '../../ducks/championsSlice'
-import { setNameCriteria } from '../../ducks/filteringSlice'
+
+import ChampionDetailDialog from '../../components/ChampionDetailDialog'
+import ChampionFilterForm from '../../components/ChampionFilterForm'
 
 import { ChampionCard } from './styles'
 
@@ -84,54 +84,6 @@ const Champions: React.FC = () => {
         )}
       </div>
     </>
-  )
-}
-
-const ChampionFilterForm = () => {
-  const dispatch = useDispatch()
-
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.isDefaultPrevented()
-    dispatch(setNameCriteria(event.target.value))
-  }
-
-  return (
-    <Form>
-      <Form.Group controlId="nameCriteria">
-        <Form.Control
-          placeholder="enter"
-          type="text"
-          onChange={handleNameChange}
-        />
-      </Form.Group>
-    </Form>
-  )
-}
-
-interface IChampionDetailDialog {
-  onClose?: any
-  championId?: any
-}
-
-const ChampionDetailDialog = ({
-  onClose,
-  championId,
-}: IChampionDetailDialog) => {
-  const champion = useSelector((state: any) =>
-    state.champions.items.find((c: any) => c.id === championId),
-  )
-  return (
-    <Modal onHide={onClose} show>
-      <Modal.Header closeButton>
-        <Modal.Title>
-          {champion.name}
-          <p>
-            <small>{champion.title}</small>
-          </p>
-        </Modal.Title>
-        <Modal.Body>{champion.blurb}</Modal.Body>
-      </Modal.Header>
-    </Modal>
   )
 }
 

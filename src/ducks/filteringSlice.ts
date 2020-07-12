@@ -1,6 +1,4 @@
-import { createSlice, Dispatch } from '@reduxjs/toolkit'
-
-import { useDispatch } from 'react-redux'
+import { createSlice } from '@reduxjs/toolkit'
 
 export const filteringSlice = createSlice({
   name: 'filtering',

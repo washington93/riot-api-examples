@@ -1,7 +1,5 @@
 import { createSlice, Dispatch } from '@reduxjs/toolkit'
 
-import { useDispatch } from 'react-redux'
-
 export const championsSlice = createSlice({
   name: 'champions',
   initialState: {
