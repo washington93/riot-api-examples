@@ -5,12 +5,14 @@ import store from './app/store'
 
 import Routes from './routes'
 
-const App: React.FC = () => (
-  <Provider store={store}>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
-  </Provider>
-)
+const App: React.FC = () => {
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </Provider>
+  )
+}
 
 export default App
